@@ -6,11 +6,10 @@ from .normal_to_height import normal_to_height
 
 # Modules from ComfyUI
 import folder_paths
-from comfy_api.latest import ComfyExtension, io
+from comfy_api.latest import io
 
 # Modules from ComfyUI-Chord
 from chord import ChordModel
-from chord.io import read_image, save_maps
 
 def apply_padding(model, mode):
     for layer in [layer for _, layer in model.named_modules() if isinstance(layer, torch.nn.Conv2d)]:
@@ -74,15 +73,13 @@ class ChordMaterialEstimation(io.ComfyNode):
                     "model",
                     tooltip="The Chord model used to estimate material."
                 ),
-                io.Image.Input(
-                    "image",
-                ),
+                io.Image.Input("image",),
             ],
             outputs=[
-                io.Image.Output("basecolor"),
-                io.Image.Output("normal"),
-                io.Image.Output("roughness"),
-                io.Image.Output("metalness"),
+                io.Image.Output("basecolor",),
+                io.Image.Output("normal",),
+                io.Image.Output("roughness",),
+                io.Image.Output("metalness",),
             ]
         )
     
@@ -112,12 +109,10 @@ class ChordNormalToHeight(io.ComfyNode):
             category="Chord",
             description="A node to convert normal map to height map using Poisson solver with overlapping subregions.",
             inputs=[
-                io.Image.Input(
-                    "normal",
-                ),
+                io.Image.Input("normal",),
             ],
             outputs=[
-                io.Image.Output("height"), 
+                io.Image.Output("height",), 
             ],
         )
     
