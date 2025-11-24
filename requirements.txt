@@ -1,0 +1,7 @@
+huggingface_hub[hf_xet]
+diffusers
+transformers
+tokenizers
+typer
+omegaconf
+imageio

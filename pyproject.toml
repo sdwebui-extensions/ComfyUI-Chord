@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-chord"
+description = "PBR material estimation custom nodes for paper: Chord: Chain of Rendering Decomposition for PBR Material Estimation from Generated Texture Images"
+version = "v1.0"
+license = { text = "Ubisoft Machine Learning License (Research-Only - Copyleft)" }
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/ubisoft/ComfyUI-Chord"
+
+[tool.comfy]
+PublisherId = "Ubisoft-LaForge"
+DisplayName = "ComfyUI-Chord"
+Icon = "https://www.ubisoft.com/favicon.ico"
