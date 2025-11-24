@@ -1,0 +1,421 @@
+{
+  "id": "ea333999-ea89-432c-8eb9-c224d5c534cc",
+  "revision": 0,
+  "last_node_id": 16,
+  "last_link_id": 17,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "ChordLoadModel",
+      "pos": [
+        534.1050021988901,
+        -196.57265864285827
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "ubisoft/ComfyUI-Chord",
+        "ver": "a3db2834454fbced4f5fc4b2d529df5c517ebe45",
+        "Node name for S&R": "ChordLoadModel"
+      },
+      "widgets_values": [
+        [
+          "chord_v1.ckpt"
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "type": "SaveImage",
+      "pos": [
+        1434.1050021988901,
+        -306.57265864285824
+      ],
+      "size": [
+        220,
+        290
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "outputs": [],
+      "title": "Normal",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71"
+      },
+      "widgets_values": [
+        "normal"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "SaveImage",
+      "pos": [
+        1194.1050021988901,
+        53.427341357141685
+      ],
+      "size": [
+        220,
+        290
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [],
+      "title": "Metalness",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71"
+      },
+      "widgets_values": [
+        "metalness"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "ChordNormalToHeight",
+      "pos": [
+        1704.1050021988901,
+        -126.5726586428583
+      ],
+      "size": [
+        230,
+        26
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "normal",
+          "type": "IMAGE",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "height",
+          "type": "IMAGE",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "ubisoft/ComfyUI-Chord",
+        "ver": "a3db2834454fbced4f5fc4b2d529df5c517ebe45",
+        "Node name for S&R": "ChordNormalToHeight"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 6,
+      "type": "SaveImage",
+      "pos": [
+        1704.1050021988901,
+        -36.57265864285831
+      ],
+      "size": [
+        230,
+        290
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "outputs": [],
+      "title": "Height",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71"
+      },
+      "widgets_values": [
+        "height"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [
+        1194.1050021988901,
+        -306.57265864285824
+      ],
+      "size": [
+        220,
+        290
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 5
+        }
+      ],
+      "outputs": [],
+      "title": "Basecolor",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71"
+      },
+      "widgets_values": [
+        "basecolor"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "SaveImage",
+      "pos": [
+        1434.1050021988901,
+        53.427341357141685
+      ],
+      "size": [
+        220,
+        290
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 6
+        }
+      ],
+      "outputs": [],
+      "title": "Roughness",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71"
+      },
+      "widgets_values": [
+        "roughness"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "ChordMaterialEstimation",
+      "pos": [
+        884.1050021988901,
+        -146.57265864285827
+      ],
+      "size": [
+        209.51328125,
+        86
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 7
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "basecolor",
+          "type": "IMAGE",
+          "links": [
+            5
+          ]
+        },
+        {
+          "name": "normal",
+          "type": "IMAGE",
+          "links": [
+            1,
+            3
+          ]
+        },
+        {
+          "name": "roughness",
+          "type": "IMAGE",
+          "links": [
+            6
+          ]
+        },
+        {
+          "name": "metalness",
+          "type": "IMAGE",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "ubisoft/ComfyUI-Chord",
+        "ver": "a3db2834454fbced4f5fc4b2d529df5c517ebe45",
+        "Node name for S&R": "ChordMaterialEstimation"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        584.1050021988901,
+        -56.57265864285831
+      ],
+      "size": [
+        220,
+        326
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            8
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pasta.jpg",
+        "image"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      9,
+      1,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      9,
+      3,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      9,
+      1,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      4,
+      5,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      9,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ],
+    [
+      6,
+      9,
+      2,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      7,
+      2,
+      0,
+      9,
+      0,
+      "MODEL"
+    ],
+    [
+      8,
+      1,
+      0,
+      9,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6010518407212682,
+      "offset": [
+        637.9686838858664,
+        924.4748967068081
+      ]
+    },
+    "frontendVersion": "1.30.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
