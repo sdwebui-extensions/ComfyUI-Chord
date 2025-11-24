@@ -1,6 +1,6 @@
 [project]
 name = "comfyui-chord"
-description = "PBR material estimation custom nodes for paper: Chord: Chain of Rendering Decomposition for PBR Material Estimation from Generated Texture Images"
+description = "Custom nodes for PBR material estimation from the paper: Chord: Chain of Rendering Decomposition for PBR Material Estimation from Generated Texture Images"
 version = "1.0.0"
 license = { file = "LICENSE" }
 dependencies = ["huggingface_hub[hf_xet]", "diffusers", "omegaconf", "imageio"]
