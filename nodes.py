@@ -122,9 +122,12 @@ class ChordNormalToHeight(io.ComfyNode):
         height_var_threshold = 5e-4
         ori_h, ori_w = normal.shape[-2:]
         x = v2.Resize(size=(1024, 1024), antialias=True)(normal)
-        height = normal_to_height(x)[None, None].squeeze(1)
-        if height.var() < height_var_threshold and height.var() > 0:
-            height = normal_to_height(x, skip_normalize_normal=True)[None, None].squeeze(1)
-
+        height_maps = []
+        for i in range(x.shape[0]): # to support batch processing
+            height = normal_to_height(x[i])[None, None].squeeze(1)
+            if height.var() < height_var_threshold and height.var() > 0:
+                height = normal_to_height(x[i], skip_normalize_normal=True)[None, None].squeeze(1)
+            height_maps.append(height)
+        height = torch.cat(height_maps, dim=0)
         height = v2.Resize(size=(ori_h, ori_w), antialias=True)(height)
         return io.NodeOutput(height)
