@@ -1,4 +1,3 @@
-huggingface_hub[hf_xet]
 diffusers
-omegaconf
 imageio
+omegaconf
