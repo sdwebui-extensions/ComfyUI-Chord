@@ -1,4 +1,8 @@
-huggingface_hub[hf_xet]
 diffusers
-omegaconf
+huggingface_hub[hf_xet]
 imageio
+omegaconf
+tokenizers
+tqdm
+transformers
+typer
