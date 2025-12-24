@@ -1,4 +1,5 @@
 import torch
+from pathlib import Path
 from torchvision.transforms import v2
 
 from diffusers import UNet2DConditionModel, AutoencoderKL, DDIMScheduler
@@ -42,7 +43,7 @@ class StableDiffusion(Base):
         elif str(self.sd_version) == "2.1":
             # model_key = "stabilityai/stable-diffusion-2-1"
             # StabilityAI deleted the original 2.1 model from HF, use a community version
-            model_key = "RedbeardNZ/stable-diffusion-2-1-base"
+            model_key = str(Path(__file__).parent.parent.parent / "config")
         else:
             raise ValueError(
                 f"Stable-diffusion version {self.sd_version} not supported."
